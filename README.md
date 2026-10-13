@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MindDesk — Pixel Robot Cat Edition
 
 Local MindDesk app with FastAPI + Ollama, guest mode, account sign-in, dark/light themes, and a custom Three.js robot-cat companion inspired by the supplied character sheet.
@@ -11,3 +12,6 @@ Pixel's design uses a white robot shell, dark screen face, neon-green pixel eyes
 4. Open http://127.0.0.1:8000.
 
 The Three.js module is loaded from jsDelivr, so the browser needs internet access to load the 3D engine. Ollama model inference remains local.
+=======
+# minddesk
+>>>>>>> 2160c8e43bb02e22cdfe451042847cade47489c5
