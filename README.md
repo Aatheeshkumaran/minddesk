@@ -1,17 +1,24 @@
-<<<<<<< HEAD
-# MindDesk — Pixel Robot Cat Edition
+# MindDesk — Pixel Robot Cat
 
-Local MindDesk app with FastAPI + Ollama, guest mode, account sign-in, dark/light themes, and a custom Three.js robot-cat companion inspired by the supplied character sheet.
+MindDesk is a personal AI assistant featuring a robot-cat companion, chat interface, user authentication, and dark/light themes.
 
-Pixel's design uses a white robot shell, dark screen face, neon-green pixel eyes and smile, navy suit, green tie/indicators, cat ears, rounded paws and feet. The 3D model is generated from geometry in the browser; no external character image is used.
+## Features
+- Interactive robot-cat UI
+- Chat interface and chat history
+- User authentication
+- Dark and light themes
+- FastAPI backend
+- Ollama integration for local AI inference
 
-## Run on Windows
-1. Extract this folder.
-2. Keep Ollama running and verify models with `ollama list`.
-3. Run `run.bat`.
-4. Open http://127.0.0.1:8000.
+## Local Development
 
-The Three.js module is loaded from jsDelivr, so the browser needs internet access to load the 3D engine. Ollama model inference remains local.
-=======
-# minddesk
->>>>>>> 2160c8e43bb02e22cdfe451042847cade47489c5
+1. Create and activate a Python virtual environment.
+2. Install dependencies:
+
+   `pip install -r requirements.txt`
+
+3. Start the application using your local run script or the appropriate Uvicorn command.
+
+## Deployment
+
+MindDesk is being prepared for cloud deployment. Cloud AI inference and persistent database storage may require additional configuration.
