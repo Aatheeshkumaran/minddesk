@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MindDesk — Your thinking space</title>
+<style>
+:root{--bg:#0d1018;--panel:#121722;--panel2:#171e2b;--line:#242c3b;--text:#eef2fb;--muted:#8d98ad;--purple:#9275ff;--purple2:#6f55e8;--green:#5bd6ad}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}.layout{height:100vh;min-height:620px;display:flex;overflow:hidden}.sidebar{width:255px;background:#10141d;border-right:1px solid var(--line);padding:23px 15px;display:flex;flex-direction:column;flex-shrink:0}.brand{display:flex;align-items:center;gap:11px;padding:0 10px 30px}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#b2a0ff,#6e51e7);display:grid;place-items:center;color:#fff;font-size:20px;box-shadow:0 7px 24px #755ce84a}.brand strong{font-size:17px;letter-spacing:-.4px}.brand small{display:block;font-size:10px;color:#858fa4;letter-spacing:1.7px;margin-top:1px}.new-chat{display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid #40375e;background:#211d34;color:#e8e1ff;border-radius:10px;padding:11px;font-weight:650;font-size:12px;margin-bottom:28px}.section-label{color:#707d94;font-size:10px;letter-spacing:1.5px;padding:0 11px;margin:0 0 10px}.history{display:flex;flex-direction:column;gap:4px}.history button{background:transparent;border:0;color:#a8b1c3;text-align:left;border-radius:8px;padding:10px 11px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.history button.active,.history button:hover{background:#1c2331;color:#fff}.history button span{margin-right:9px;color:#8e81dc}.side-bottom{margin-top:auto;border-top:1px solid var(--line);padding:16px 5px 0;display:flex;align-items:center;gap:10px}.avatar{height:33px;width:33px;border-radius:50%;background:#2d3347;color:#c9c1ff;display:grid;place-items:center;font-weight:700;font-size:11px}.user-name{font-size:12px;font-weight:650}.user-plan{font-size:10px;color:#7f8aa0;margin-top:2px}.main{flex:1;display:flex;flex-direction:column;min-width:0;background:radial-gradient(ellipse at 52% 15%,#19152b 0,transparent 42%),var(--bg)}.topbar{height:69px;display:flex;align-items:center;justify-content:space-between;padding:0 29px;border-bottom:1px solid #202634;flex-shrink:0}.top-title{font-size:12px;color:#b6bfd0}.top-title strong{color:#f3f5fb;font-weight:650}.top-actions{display:flex;align-items:center;gap:9px}.status{display:flex;align-items:center;gap:7px;color:#9da9bd;font-size:11px;background:#171e2a;border:1px solid #283143;padding:7px 10px;border-radius:20px}.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px #5bd6ad65}.icon-btn{height:32px;width:32px;display:grid;place-items:center;border:1px solid #293143;border-radius:9px;background:#171e2a;color:#b7c0d1}.content{flex:1;overflow:auto;display:flex;flex-direction:column;align-items:center;padding:38px 22px 22px}.welcome{width:min(760px,100%);text-align:center;margin:auto auto 24px;padding-top:5px}.orb{width:61px;height:61px;border-radius:21px;background:linear-gradient(145deg,#a994ff,#7051e9);margin:0 auto 20px;display:grid;place-items:center;font-size:29px;box-shadow:0 0 55px #8168ff30}.welcome h1{font-size:35px;letter-spacing:-1.5px;margin:0 0 11px;font-weight:750}.welcome h1 em{font-style:normal;background:linear-gradient(90deg,#c5b9ff,#8d77ff);-webkit-background-clip:text;background-clip:text;color:transparent}.welcome p{font-size:13px;color:#939eb2;max-width:440px;margin:0 auto;line-height:1.8}.suggestions{width:min(700px,100%);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:23px}.suggestion{background:#141a26;border:1px solid #272f40;border-radius:12px;padding:14px 15px;text-align:left;color:#e5e9f3;transition:.2s}.suggestion:hover{border-color:#7663c7;transform:translateY(-2px);background:#191e2d}.suggestion .s-icon{font-size:17px;margin-bottom:10px;color:#a997ff}.suggestion strong{display:block;font-size:12px;font-weight:650;margin-bottom:4px}.suggestion span{font-size:11px;color:#8d99ae}.conversation{width:min(760px,100%);display:none;flex-direction:column;gap:22px;margin:0 auto 24px}.message{display:flex;gap:12px;align-items:flex-start}.message.user{flex-direction:row-reverse}.message-icon{width:30px;height:30px;flex-shrink:0;border-radius:10px;display:grid;place-items:center;background:#2a2343;color:#c4b7ff;font-size:14px}.message.user .message-icon{background:#253348;color:#c6e0ff}.message-body{max-width:calc(100% - 45px);font-size:13px;line-height:1.8;color:#d8deeb;padding-top:3px;white-space:pre-wrap;overflow-wrap:anywhere}.message.user .message-body{background:#1c2433;border:1px solid #2b3548;border-radius:13px;padding:10px 14px;color:#f2f4fa}.composer-wrap{width:min(760px,100%);margin:0 auto}.composer{background:#151b27;border:1px solid #343c4f;border-radius:15px;padding:11px 12px 10px;box-shadow:0 10px 45px #0002;transition:border .2s}.composer:focus-within{border-color:#7161bd}.composer input{display:block;width:100%;background:transparent;border:0;outline:0;color:#f3f5fb;padding:7px 7px 12px;font-size:13px}.composer input::placeholder{color:#78859b}.composer-foot{display:flex;justify-content:space-between;align-items:center;padding:0 2px}.composer-hint{font-size:10px;color:#77839a}.send{height:33px;width:36px;border:0;border-radius:9px;background:var(--purple);color:white;font-size:18px;display:grid;place-items:center;transition:.15s}.send:hover{background:#a18aff}.send:disabled{opacity:.5;cursor:default}.disclaimer{text-align:center;color:#68758a;font-size:10px;margin-top:12px}.typing{display:flex;gap:4px;padding:9px 0}.typing i{width:5px;height:5px;border-radius:50%;background:#9e8cff;animation:pulse .9s infinite alternate}.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}@keyframes pulse{to{opacity:.25;transform:translateY(-3px)}}.mobile-menu{display:none}
+@media(max-width:700px){.sidebar{width:215px;position:absolute;z-index:5;height:100%;transform:translateX(-100%);transition:transform .2s}.sidebar.open{transform:translateX(0)}.mobile-menu{display:grid}.topbar{padding:0 15px}.content{padding:28px 15px 18px}.welcome h1{font-size:29px}.welcome{margin-top:auto}.suggestions{grid-template-columns:1fr}.suggestion{padding:12px}.suggestion .s-icon{margin-bottom:5px}.status{display:none}}
+
+.auth-screen{position:fixed;inset:0;z-index:50;background:radial-gradient(ellipse at 50% 10%,#241c45 0,transparent 48%),#0b0e15;display:grid;place-items:center;padding:22px}
+.auth-card{width:min(420px,100%);background:#121722;border:1px solid #2a3142;border-radius:22px;padding:28px;box-shadow:0 25px 90px #0007}
+.auth-brand{display:flex;align-items:center;gap:10px;margin-bottom:24px}.auth-brand .logo{flex-shrink:0}
+.auth-card h2{font-size:25px;margin:0 0 6px;letter-spacing:-.7px}.auth-card p{color:#8d98ad;font-size:12px;margin:0 0 22px}
+.auth-tabs{display:flex;background:#0d1119;padding:4px;border-radius:10px;margin-bottom:18px}.auth-tabs button{flex:1;border:0;border-radius:8px;background:transparent;color:#8994a8;padding:9px}.auth-tabs button.active{background:#29223f;color:#eee8ff}
+.auth-card label{display:block;font-size:11px;color:#aeb8ca;margin:12px 0 6px}.auth-card input{width:100%;padding:11px 12px;background:#0d121b;border:1px solid #30384a;border-radius:9px;color:#f3f5fb;outline:none}.auth-card input:focus{border-color:#8c78f5}
+.auth-submit{width:100%;margin-top:18px;border:0;border-radius:10px;background:linear-gradient(90deg,#9275ff,#6f55e8);color:white;font-weight:700;padding:12px}.auth-error{color:#ffaaaa;font-size:11px;min-height:18px;margin-top:9px}
+.pet{position:fixed;right:22px;bottom:22px;z-index:10;width:90px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none}
+.pet-bubble{background:#201c31;border:1px solid #514474;color:#dcd4ff;border-radius:11px;padding:7px 9px;font-size:10px;line-height:1.35;max-width:155px;text-align:center;margin-bottom:5px;box-shadow:0 8px 25px #0004;opacity:0;transform:translateY(5px);transition:.25s}
+.pet.talk .pet-bubble{opacity:1;transform:translateY(0)}
+.pet-buddy{width:62px;height:62px;position:relative;display:grid;place-items:center;filter:drop-shadow(0 9px 12px #8c73ff22);animation:petFloat 2.6s ease-in-out infinite}
+.pet-body{width:49px;height:43px;border-radius:17px 17px 15px 15px;background:linear-gradient(145deg,#c4b7ff,#7961eb);border:2px solid #e0d8ff;position:relative;box-shadow:inset -5px -5px 0 #6650cc}
+.pet-body:before,.pet-body:after{content:"";position:absolute;top:-8px;width:13px;height:15px;background:#9b86ff;border:2px solid #e0d8ff;border-radius:8px 8px 3px 3px}.pet-body:before{left:4px;transform:rotate(-17deg)}.pet-body:after{right:4px;transform:rotate(17deg)}
+.pet-eyes{position:absolute;left:10px;right:10px;top:13px;display:flex;justify-content:space-between}.pet-eyes i{display:block;width:6px;height:8px;border-radius:5px;background:#292344;box-shadow:0 0 5px #fff5}
+.pet-mouth{position:absolute;left:20px;top:26px;width:8px;height:4px;border-bottom:2px solid #34294f;border-radius:50%}
+.pet-buddy:after{content:"";position:absolute;bottom:1px;width:35px;height:6px;border-radius:50%;background:#8d78ff33;filter:blur(3px)}
+.pet.sending .pet-buddy{animation:petBounce .5s ease-in-out infinite alternate}.pet.happy .pet-body{background:linear-gradient(145deg,#b6ffe1,#4fcaa6);box-shadow:inset -5px -5px 0 #269b7d}
+@keyframes petFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes petBounce{to{transform:translateY(-10px) rotate(7deg)}}
+@media(max-width:700px){.pet{right:8px;bottom:8px;transform:scale(.82);transform-origin:bottom right}.auth-card{padding:22px}}
+
+
+/* MindDesk palette refresh: coral + aqua */
+:root{--bg:#101116;--panel:#17181f;--panel2:#20212a;--line:#30313a;--text:#f6f5f3;--muted:#a5a4ae;--purple:#f29191;--purple2:#f7adad;--green:#b1e5e6}
+body{background:var(--bg);color:var(--text)}
+.logo,.orb{background:linear-gradient(145deg,#f29191,#f7adad);color:#29232a;box-shadow:0 7px 24px #f2919130}
+.new-chat{border-color:#70474c;background:#302329;color:#ffe8e8}
+.main{background:radial-gradient(ellipse at 52% 15%,#30232a 0,transparent 42%),var(--bg)}
+.topbar{border-bottom-color:var(--line)}
+.top-title strong{color:var(--text)}
+.status{background:var(--panel2);border-color:var(--line)}
+.dot{background:#b1e5e6;box-shadow:0 0 8px #b1e5e665}
+.suggestion{background:var(--panel);border-color:var(--line);color:var(--text)}
+.suggestion:hover{border-color:#f29191}
+.s-icon{color:#f29191}
+.composer{background:var(--panel);border-color:var(--line)}
+.send-btn{background:#f29191;color:#2b2024}
+.icon-btn{background:var(--panel2);border-color:var(--line);color:var(--text)}
+.history button.active,.history button:hover{background:var(--panel2)}
+.avatar{background:#f7adad;color:#36262a}
+.auth-screen{display:none;background:#0d0e12eF;backdrop-filter:blur(12px)}
+.auth-card{background:var(--panel);border-color:var(--line)}
+.auth-card input{background:var(--bg);border-color:var(--line)}
+.auth-submit{background:linear-gradient(90deg,#f29191,#f7adad);color:#332226}
+.auth-tabs{background:var(--bg)}
+.auth-tabs button.active{background:#472f35;color:#ffe9e9}
+.pet{right:24px;bottom:18px;width:150px;height:150px;pointer-events:auto;cursor:pointer;z-index:9}
+.pet-buddy{width:145px;height:128px;animation:petFloat 3.2s ease-in-out infinite;filter:drop-shadow(0 12px 18px #0005)}
+#pixel3d{display:block;width:100%;height:100%;outline:none;cursor:grab}
+.pet.walking #pixel3d{cursor:grabbing}
+.pet-buddy{perspective:700px}
+.pet-buddy canvas{filter:drop-shadow(0 12px 16px #0003)}
+.pet.dragging .pet-buddy{transform:scale(1.05) rotateY(-12deg)}
+.pet-bubble{max-width:190px;font-size:11px}
+.pet.talk .pet-bubble{opacity:1}
+.theme-toggle{width:auto;padding:0 11px;display:flex;gap:7px;font-size:11px}
+.login-top{border:1px solid #f29191;background:#302329;color:#ffe7e7;border-radius:10px;padding:8px 13px;font-weight:650;font-size:12px}
+.login-top:hover{background:#483139}
+body.light{--bg:#fbf9f8;--panel:#ffffff;--panel2:#f5efef;--line:#e8dddd;--text:#29252a;--muted:#77717a;--purple:#f29191;--purple2:#f7adad;--green:#8ccfd0;background:var(--bg);color:var(--text)}
+body.light .sidebar{background:#fff;border-right-color:var(--line)}
+body.light .main{background:radial-gradient(ellipse at 52% 15%,#fff0f0 0,transparent 48%),var(--bg)}
+body.light .topbar{border-bottom-color:var(--line)}
+body.light .top-title,body.light .top-title strong{color:var(--text)}
+body.light .new-chat{background:#fff1f1;color:#71494b;border-color:#f1caca}
+body.light .history button{color:#6d6670}
+body.light .history button.active,body.light .history button:hover{background:#fff0f0;color:#382b2d}
+body.light .welcome p{color:#77717a}
+body.light .suggestion{background:#fff;border-color:var(--line);color:var(--text)}
+body.light .composer{background:#fff;border-color:var(--line)}
+body.light .status,body.light .icon-btn{background:#fff;border-color:var(--line);color:var(--text)}
+body.light .login-top{background:#fff0f0;color:#71494b}
+body.light .auth-screen{background:#fff9f9ed}
+body.light .auth-card{background:#fff}
+body.light .auth-card input{background:#fff;border-color:var(--line);color:var(--text)}
+body.light .auth-tabs{background:#f8f1f1}
+body.light .auth-tabs button.active{background:#ffe7e7;color:#71494b}
+body.light .pet-buddy img{mix-blend-mode:multiply}
+@media(max-width:700px){.pet{right:2px;bottom:2px;transform:scale(.75);transform-origin:bottom right}.login-top{padding:7px 9px}}
+
+
+/* Pixel: interactive desktop-companion mode */
+.pet{position:fixed;right:22px;bottom:18px;z-index:30;width:142px;min-height:155px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:auto;user-select:none;touch-action:none;transition:left 1.1s ease,right 1.1s ease, bottom .4s ease;cursor:grab}
+.pet.dragging{transition:none;cursor:grabbing}
+.pet-buddy{width:126px;height:112px;position:relative;display:grid;place-items:center;animation:pixelIdle 2.7s ease-in-out infinite;transform-origin:bottom center}
+.pet-buddy img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 12px #0003);pointer-events:none}
+.pet-buddy:after{content:"";position:absolute;bottom:1px;width:62px;height:9px;border-radius:50%;background:#0003;filter:blur(5px);z-index:-1}
+.pet-bubble{position:relative;max-width:175px;min-width:92px;text-align:center;padding:7px 10px;margin-bottom:3px;border:1px solid var(--line);border-radius:13px;background:var(--panel);color:var(--text);font-size:11px;line-height:1.35;box-shadow:0 8px 24px #0002;opacity:0;transform:translateY(5px) scale(.97);transition:.2s;pointer-events:none}
+.pet.talk .pet-bubble,.pet:hover .pet-bubble{opacity:1;transform:translateY(0) scale(1)}
+.pet-controls{display:flex;gap:5px;position:absolute;top:0;right:0;opacity:0;transform:translateY(4px);transition:.2s}
+.pet:hover .pet-controls,.pet:focus-within .pet-controls,.pet.chat-open .pet-controls{opacity:1;transform:translateY(0)}
+.pet-controls button{width:27px;height:27px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--text);box-shadow:0 4px 12px #0002;cursor:pointer}
+.pet-chat{position:fixed;z-index:31;right:24px;bottom:190px;width:min(330px,calc(100vw - 28px));height:390px;max-height:60vh;background:var(--panel);border:1px solid var(--line);border-radius:17px;box-shadow:0 18px 60px #0005;display:none;flex-direction:column;overflow:hidden;color:var(--text)}
+.pet-chat.open{display:flex;animation:petChatIn .18s ease-out}
+.pet-chat-head{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid var(--line);font-weight:700;font-size:12px}
+.pet-chat-head small{display:block;color:var(--muted);font-weight:400;font-size:10px;margin-top:2px}
+.pet-chat-head button{border:0;background:transparent;color:var(--muted);font-size:20px}
+.pet-chat-log{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:9px}
+.pet-chat-line{max-width:91%;white-space:pre-wrap;overflow-wrap:anywhere;border-radius:12px;padding:9px 11px;font-size:12px;line-height:1.55;background:var(--panel2);align-self:flex-start}
+.pet-chat-line.me{align-self:flex-end;background:#f7adad;color:#2c2527}
+.pet-chat-form{display:flex;gap:7px;padding:10px;border-top:1px solid var(--line)}
+.pet-chat-form input{min-width:0;flex:1;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);padding:9px;font-size:12px;outline:none}
+.pet-chat-form button{border:0;border-radius:10px;background:#f29191;color:#2c2527;padding:0 12px;font-weight:700}
+.pet-heart{position:fixed;z-index:32;pointer-events:none;font-size:22px;animation:heartPop 1s ease-out forwards}
+.pet.walking .pet-buddy{animation:pixelWalk .34s ease-in-out infinite alternate}
+.pet.sleeping .pet-buddy{animation:pixelSleep 2.5s ease-in-out infinite;filter:brightness(.82)}
+.pet.happy .pet-buddy{animation:pixelHappy .45s ease-in-out 3}
+.pet.sending .pet-buddy{animation:pixelWalk .25s ease-in-out infinite alternate}
+@keyframes pixelIdle{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes pixelWalk{from{transform:translateY(0) rotate(-5deg)}to{transform:translateY(-5px) rotate(5deg)}}
+@keyframes pixelSleep{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(3px) rotate(-2deg)}}
+@keyframes pixelHappy{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-15px) scale(1.04)}}
+@keyframes heartPop{0%{opacity:0;transform:translateY(8px) scale(.4)}20%{opacity:1}100%{opacity:0;transform:translateY(-48px) scale(1.3)}}
+@keyframes petChatIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:700px){.pet{right:8px;bottom:8px;transform:scale(.82);transform-origin:bottom right}.pet-chat{right:10px;bottom:145px}}
+
+
+/* Usability fixes: theme contrast, larger expressive companion, and history selection */
+body.light .message-body, body.light .message, body.light .topbar, body.light .content,
+body.light .section-label, body.light .history button, body.light .user-name,
+body.light .user-plan, body.light .composer textarea, body.light .composer textarea::placeholder,
+body.light .composer .hint, body.light .footer-note, body.light .top-title,
+body.light .suggestion strong, body.light .suggestion span { color: var(--text) !important; }
+body.light .muted, body.light small, body.light .top-title span { color: #625c65 !important; }
+body.light .history button.active { background:#f5e7e7; color:#30262b !important; }
+body.light .message.user .message-body { background:#f6e4e4; color:#29252a; }
+body.light .message.assistant .message-body { color:#29252a; }
+body.light .composer textarea { background:transparent; }
+body.light .pet-chat, body.light .pet-chat * { color:var(--text); }
+body.light .pet-chat textarea { background:#fff;color:#29252a; }
+.pet { width:196px !important; height:220px !important; min-height:220px !important; }
+.pet-buddy { width:184px !important; height:174px !important; }
+#pixel3d { width:100%;height:100%; }
+.pet-bubble { background:var(--panel); color:var(--text); border-color:var(--line); }
+.history button { text-align:left; }
+.history button.active { outline:1px solid var(--purple); }
+@media(max-width:700px){.pet{width:150px!important;height:180px!important;min-height:180px!important}.pet-buddy{width:145px!important;height:145px!important}}
+
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">✳</div><div><strong>MindDesk</strong><small>THINK CLEARER</small></div></div>
+  <button class="new-chat" id="newChat"><span>＋</span> New conversation</button>
+  <div class="section-label">RECENT</div>
+  <div class="history" id="history">
+    <button class="active"><span>◌</span> Welcome to MindDesk</button>
+  </div>
+  <div class="side-bottom"><div class="avatar" id="userAvatar">?</div><div style="min-width:0;flex:1"><div class="user-name" id="userName">Guest</div><div class="user-plan" id="userEmail">Personal workspace</div></div><button id="logoutBtn" title="Sign out" style="display:none;background:transparent;border:0;color:#929db2;font-size:16px">↪</button></div>
+</aside>
+<main class="main">
+  <header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="icon-btn mobile-menu" id="menuBtn" aria-label="Open menu">☰</button><div class="top-title"><strong>Workspace</strong> <span style="color:#5d687e">/</span> New conversation</div></div><div class="top-actions"><div class="status" id="connectionStatus"><i class="dot"></i> Checking Ollama…</div><select id="modelSelect" aria-label="Choose local model" style="max-width:155px;background:#171e2a;color:#cbd3e2;border:1px solid #293143;border-radius:9px;padding:8px;font-size:11px"></select><button class="icon-btn theme-toggle" id="themeToggle" title="Switch theme">☀ <span>Light</span></button><button class="login-top" id="loginTopBtn">Sign in / Sign up</button><button class="icon-btn" id="clearBtn" title="Clear conversation" aria-label="Clear conversation">↻</button></div></header>
+  <section class="content" id="content">
+    <div class="welcome" id="welcome"><div class="orb">✳</div><h1>Good ideas start with <em>a question.</em></h1><p>Your thinking partner for brainstorming, writing, planning, and solving problems. What would you like to work on today?</p></div>
+    <div class="suggestions" id="suggestions">
+      <button class="suggestion" data-prompt="Help me brainstorm five creative ideas for a new project."><div class="s-icon">✧</div><strong>Brainstorm ideas</strong><span>Explore fresh angles for your next project</span></button>
+      <button class="suggestion" data-prompt="Help me write a clear, professional email about a project update."><div class="s-icon">↗</div><strong>Write something</strong><span>Turn rough thoughts into clear writing</span></button>
+      <button class="suggestion" data-prompt="Help me break a big goal into a simple plan for this week."><div class="s-icon">▦</div><strong>Make a plan</strong><span>Turn a big goal into manageable steps</span></button>
+      <button class="suggestion" data-prompt="Explain a complicated technical topic in simple terms, with an example."><div class="s-icon">⌘</div><strong>Learn a concept</strong><span>Make something complex easier to understand</span></button>
+    </div>
+    <div class="conversation" id="conversation" aria-live="polite"></div>
+    <div class="composer-wrap"><form class="composer" id="chatForm"><input id="promptInput" autocomplete="off" placeholder="Ask MindDesk anything..." aria-label="Message MindDesk"><div class="composer-foot"><span class="composer-hint">↵ Enter to send · Your ideas, organized.</span><button class="send" id="sendBtn" type="submit" aria-label="Send message">↑</button></div></form><div class="disclaimer">MindDesk · Local AI powered by Ollama · Your prompts are sent to your local model</div></div>
+  </section>
+</main>
+</div>
+<div class="auth-screen" id="authScreen">
+  <form class="auth-card" id="authForm"><button type="button" id="closeAuth" aria-label="Close sign in" style="float:right;background:transparent;border:0;color:var(--muted);font-size:20px">×</button>
+    <div class="auth-brand"><div class="logo">✳</div><div><strong>MindDesk</strong><small style="display:block;color:#858fa4;font-size:10px;letter-spacing:1.5px">THINK CLEARER</small></div></div>
+    <h2 id="authTitle">Welcome back.</h2><p id="authSubtitle">Sign in to your personal AI workspace.</p>
+    <div class="auth-tabs"><button type="button" class="active" id="loginTab">Sign in</button><button type="button" id="signupTab">Create account</button></div>
+    <div id="nameField" style="display:none"><label for="authName">Your name</label><input id="authName" autocomplete="name" placeholder="e.g. Aatheesh"></div>
+    <label for="authEmail">Email address</label><input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com">
+    <label for="authPassword">Password (at least 8 characters)</label><input id="authPassword" type="password" autocomplete="current-password" minlength="8" required placeholder="••••••••">
+    <button class="auth-submit" id="authSubmit" type="submit">Sign in</button><div class="auth-error" id="authError"></div>
+  </form>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const input=$('promptInput'), conv=$('conversation'), welcome=$('welcome'), suggestions=$('suggestions'), history=$('history');
+let firstMessage=true, chatMessages=[], activeTitle='New conversation', authMode='login', signedInUser=null;
+let chatStore=[], activeChatId=null, chatCounter=0;
+const guestUser={name:'Guest',email:'Temporary session'};
+function openAuth(mode='login'){$('authScreen').style.display='grid';setAuthMode(mode);}
+$('loginTopBtn').addEventListener('click',()=>openAuth('login'));
+$('closeAuth').addEventListener('click',()=>$('authScreen').style.display='none');
+$('authScreen').addEventListener('click',e=>{if(e.target===$('authScreen'))$('authScreen').style.display='none';});
+$('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');$('themeToggle').innerHTML=light?'☾ <span>Dark</span>':'☀ <span>Light</span>';try{localStorage.setItem('minddesk-theme',light?'light':'dark')}catch(e){}});
+try{if(localStorage.getItem('minddesk-theme')==='light'){document.body.classList.add('light');$('themeToggle').innerHTML='☾ <span>Dark</span>'}}catch(e){}
+
+function setStatus(ok,text){const el=$('connectionStatus');el.innerHTML='<i class="dot" style="background:'+(ok?'#5bd6ad':'#ff8d8d')+'"></i> '+text; if(!ok)el.style.color='#ffb3b3';}
+/* Kiko (pet.js) hooks - safe even if the pet hasn't loaded yet */
+function petSay(message){try{window.MindDeskPet&&window.MindDeskPet.say(message)}catch(e){}}
+function petThinking(on){try{window.MindDeskPet&&window.MindDeskPet.setThinking(on)}catch(e){}}
+function setAuthMode(mode){authMode=mode;const signup=mode==='signup';$('nameField').style.display=signup?'block':'none';$('authName').required=signup;$('authTitle').textContent=signup?'Make MindDesk yours.':'Welcome back.';$('authSubtitle').textContent=signup?'Create your account and meet your desk buddy.':'Sign in to your personal AI workspace.';$('authSubmit').textContent=signup?'Create account':'Sign in';$('loginTab').classList.toggle('active',!signup);$('signupTab').classList.toggle('active',signup);$('authPassword').autocomplete=signup?'new-password':'current-password';$('authError').textContent='';}
+$('loginTab').addEventListener('click',()=>setAuthMode('login'));$('signupTab').addEventListener('click',()=>setAuthMode('signup'));
+async function authRequest(path,payload){const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await r.json();if(!r.ok)throw new Error(data.detail||'Could not sign in.');return data;}
+$('authForm').addEventListener('submit',async e=>{e.preventDefault();$('authSubmit').disabled=true;$('authError').textContent='';try{const payload={email:$('authEmail').value.trim(),password:$('authPassword').value};if(authMode==='signup')payload.name=$('authName').value.trim();const data=await authRequest(authMode==='signup'?'/api/signup':'/api/login',payload);enterApp(data.user);}catch(err){$('authError').textContent=err.message;}finally{$('authSubmit').disabled=false;}});
+function enterApp(user){signedInUser=user;$('authScreen').style.display='none';$('loginTopBtn').style.display='none';$('logoutBtn').style.display='block';$('userName').textContent=user.name;$('userEmail').textContent=user.email;$('userAvatar').textContent=user.name.split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase();const title=document.querySelector('.top-title');if(title)title.innerHTML=`<strong>${escapeHtml(user.name)}'s workspace</strong> <span style="color:#5d687e">/</span> New conversation`;petSay('Hey '+user.name.split(' ')[0]+'! I’m Pixel. Let’s make something great.','happy');loadModels();}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function enterGuest(){signedInUser=null;$('authScreen').style.display='none';$('loginTopBtn').style.display='inline-block';$('logoutBtn').style.display='none';$('userName').textContent='Guest';$('userEmail').textContent='Temporary session';$('userAvatar').textContent='G';const title=document.querySelector('.top-title');if(title)title.innerHTML='<strong>Guest workspace</strong> <span style="color:var(--muted)">/</span> New conversation';loadModels();}
+async function checkSession(){try{const r=await fetch('/api/me');const d=await r.json();if(d.authenticated)enterApp(d.user);else enterGuest();}catch(e){enterGuest();}}
+$('logoutBtn').addEventListener('click',async()=>{await fetch('/api/logout',{method:'POST'});signedInUser=null;enterGuest();setAuthMode('login');reset();petSay('See you next time!');});
+async function loadModels(){
+ try{
+  const r=await fetch('/api/models');const data=await r.json();
+  if(r.status===401){enterGuest();return;}
+  if(!r.ok)throw new Error(data.detail||'Ollama unavailable');
+  const select=$('modelSelect');select.innerHTML='';
+  (data.models||[]).forEach(name=>{const opt=document.createElement('option');opt.value=name;opt.textContent=name;select.appendChild(opt);});
+  if(data.default)select.value=data.default;
+  setStatus(true,'Ollama connected');
+  if(!data.models.length)setStatus(false,'No models installed');
+ }catch(e){setStatus(false,'Ollama offline');}
+}
+function addMessage(text,role){
+ const row=document.createElement('div');row.className='message '+role;
+ const icon=document.createElement('div');icon.className='message-icon';icon.textContent=role==='user'?(signedInUser?.name?.[0]||'Y'):'✳';
+ const body=document.createElement('div');body.className='message-body';body.textContent=text;
+ row.append(icon,body);conv.appendChild(row);return row;
+}
+function addHistory(chat){
+ const hist=document.createElement('button');
+ hist.dataset.chatId=chat.id;
+ hist.innerHTML='<span>◌</span> '+escapeHtml(chat.title);
+ hist.classList.toggle('active',chat.id===activeChatId);
+ hist.addEventListener('click',()=>openChat(chat.id));
+ chat.element=hist;
+ history.prepend(hist);
+}
+function syncActiveChat(){
+ const current=chatStore.find(c=>c.id===activeChatId);
+ if(current){current.messages=chatMessages.slice();current.title=activeTitle; if(current.element){current.element.innerHTML='<span>◌</span> '+escapeHtml(current.title);}}
+ history.querySelectorAll('button[data-chat-id]').forEach(b=>b.classList.toggle('active',b.dataset.chatId===activeChatId));
+}
+function openChat(id){
+ syncActiveChat();
+ const chat=chatStore.find(c=>c.id===id);if(!chat)return;
+ activeChatId=id;chatMessages=chat.messages.slice();activeTitle=chat.title;firstMessage=chatMessages.length===0;
+ conv.innerHTML='';
+ if(firstMessage){conv.style.display='none';welcome.style.display='block';suggestions.style.display='grid';}
+ else {welcome.style.display='none';suggestions.style.display='none';conv.style.display='flex';
+   chatMessages.forEach(m=>addMessage(m.content,m.role));}
+ history.querySelectorAll('button[data-chat-id]').forEach(b=>b.classList.toggle('active',b.dataset.chatId===id));
+ $('content').scrollTop=$('content').scrollHeight;
+}
+async function askModel(onDelta){
+ const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),180000);
+ try{
+  const r=await fetch('/api/chat/stream',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:chatMessages,model:$('modelSelect').value||null}),signal:ctrl.signal});
+  if(!r.ok){let d='The request failed.';try{d=(await r.json()).detail||d}catch(e){}throw new Error(d);}
+  const reader=r.body.getReader(),dec=new TextDecoder();let buf='',full='';
+  for(;;){
+   const {done,value}=await reader.read();if(done)break;
+   buf+=dec.decode(value,{stream:true});let i;
+   while((i=buf.indexOf('\n'))>=0){
+    const line=buf.slice(0,i).trim();buf=buf.slice(i+1);if(!line)continue;
+    let m;try{m=JSON.parse(line)}catch(e){continue}
+    if(m.error)throw new Error(m.error);
+    if(m.delta){full+=m.delta;onDelta(full);}
+   }
+  }
+  if(!full.trim())throw new Error('The model returned an empty reply. Try again.');
+  return full;
+ }catch(e){
+  if(e.name==='AbortError')throw new Error('The model took too long to respond.');
+  throw e;
+ }finally{clearTimeout(timer);}
+}
+async function sendMessage(text){
+ text=(text||'').trim();if(!text)return;
+ if(firstMessage){
+  welcome.style.display='none';suggestions.style.display='none';conv.style.display='flex';firstMessage=false;
+  activeTitle=text.length>28?text.slice(0,28)+'…':text;
+  if(!activeChatId || !chatStore.some(c=>c.id===activeChatId)){
+   activeChatId='chat-'+(++chatCounter);
+   const chat={id:activeChatId,title:activeTitle,messages:[]};chatStore.unshift(chat);addHistory(chat);
+  } else {
+   const chat=chatStore.find(c=>c.id===activeChatId);chat.title=activeTitle;
+   if(!chat.element)addHistory(chat);else chat.element.innerHTML='<span>◌</span> '+escapeHtml(activeTitle);
+  }
+ }
+ addMessage(text,'user');chatMessages.push({role:'user',content:text});syncActiveChat();input.value='';input.disabled=true;$('sendBtn').disabled=true;
+ const typing=addMessage('','assistant');typing.querySelector('.message-body').innerHTML='<div class="typing"><i></i><i></i><i></i></div>';
+ $('content').scrollTop=$('content').scrollHeight;petThinking(true);
+ const msgBody=typing.querySelector('.message-body');
+ try{
+  const reply=await askModel(txt=>{msgBody.textContent=txt;$('content').scrollTop=$('content').scrollHeight;});
+  msgBody.textContent=reply;chatMessages.push({role:'assistant',content:reply});syncActiveChat();setStatus(true,'Ollama connected');petThinking(false);
+ }catch(e){
+  msgBody.textContent='I couldn’t get a response: '+e.message+'\n\nCheck that Ollama is running and that you have a model installed.';
+  setStatus(false,'Connection issue');petThinking(false);petSay('Hmm, something went wrong. Check the connection.');
+ }
+ finally{input.disabled=false;$('sendBtn').disabled=false;input.focus();$('content').scrollTop=$('content').scrollHeight;}
+}
+$('chatForm').addEventListener('submit',e=>{e.preventDefault();sendMessage(input.value);});
+document.querySelectorAll('.suggestion').forEach(btn=>btn.addEventListener('click',()=>sendMessage(btn.dataset.prompt)));
+function reset(){
+ syncActiveChat();
+ activeChatId=null;conv.innerHTML='';conv.style.display='none';welcome.style.display='block';suggestions.style.display='grid';
+ firstMessage=true;chatMessages=[];activeTitle='New conversation';input.value='';$('content').scrollTop=0;
+ history.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+ input.focus();petSay('Fresh start! Your earlier chats are still here.');
+}
+$('newChat').addEventListener('click',reset);
+$('clearBtn').addEventListener('click',reset);
+$('menuBtn').addEventListener('click',()=>$('sidebar').classList.toggle('open'));
+checkSession();
+
+</script>
+
+<script type="module" src="/static/pet.js"></script>
+
+</body></html>
